@@ -49,6 +49,10 @@ Conversion runs entirely in your browser. The extension makes no network
 requests of its own and has no accounts or telemetry. See
 [PRIVACY.md](PRIVACY.md).
 
+## Install
+
+[Add it from the Chrome Web Store](https://chromewebstore.google.com/detail/copy-as-markdown-by-temi/dmomeicebkllaomhnhfenbjhjfofjoeg).
+
 ## Install from source
 
 ```sh
