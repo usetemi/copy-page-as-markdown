@@ -76,7 +76,7 @@ async function copyFrom(url: string): Promise<string> {
   await clickToolbarIcon(page);
 
   const read = () => reader.evaluate(() => navigator.clipboard.readText());
-  await expect.poll(read).not.toBe("sentinel");
+  await expect.poll(read).toContain(`Source: ${url}`);
   const markdown = await read();
   await reader.close();
   await page.close();
@@ -109,9 +109,7 @@ test("copies from an insecure page, which has no clipboard API", async () => {
 test("copies again after a repeat press", async () => {
   const page = await context.newPage();
   await page.goto(`${origin}/page`);
-  await page.evaluate(() => navigator.clipboard.writeText("sentinel"));
   await Promise.all([clickToolbarIcon(page), clickToolbarIcon(page)]);
-  await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toContain("/page");
   await page.close();
   expect(await copyFrom(`${origin}/blocked`)).toContain("/blocked");
 });

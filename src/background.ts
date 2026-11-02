@@ -1,22 +1,22 @@
 const BADGE_DURATION_MS = 2000;
 
-// Only one offscreen document can exist, so a repeat press waits out the copy in progress.
-let copying = false;
+// Only one offscreen document can exist, so copies run one at a time.
+let lastCopy = Promise.resolve();
 
-chrome.action.onClicked.addListener(async (tab) => {
-  const tabId = tab.id;
-  if (tabId === undefined || copying) return;
-  copying = true;
+chrome.action.onClicked.addListener((tab) => {
+  lastCopy = lastCopy.then(() => copyTab(tab.id)).catch(console.error);
+});
+
+async function copyTab(tabId: number | undefined): Promise<void> {
+  if (tabId === undefined) return;
   try {
     await writeToClipboard(await convertTab(tabId));
     await showBadge(tabId, "✓", "#0c8159");
   } catch (error) {
     console.error("Copy failed", error);
     await showBadge(tabId, "✕", "#d3395c");
-  } finally {
-    copying = false;
   }
-});
+}
 
 async function convertTab(tabId: number): Promise<string> {
   await chrome.scripting.executeScript({ target: { tabId }, files: ["content.js"] });
