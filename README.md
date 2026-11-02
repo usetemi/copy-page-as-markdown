@@ -1,4 +1,4 @@
-# Copy Page as Markdown
+# Copy as Markdown by Temi
 
 A Chrome extension that copies the page you are on to your clipboard as
 Markdown, ready to paste into an LLM. Not every site has a "copy to Markdown"
@@ -73,7 +73,7 @@ action, and read the real clipboard.
 
 ## Release
 
-Set the version in `manifest.json`, then push a matching tag such as `v0.1.0`.
+Set the version in `manifest.json`, then push a matching tag such as `v0.1.1`.
 CI runs the tests and attaches `copy-page-as-markdown.zip` to a GitHub release.
 Upload that zip in the Chrome Web Store developer dashboard. `store/` holds the
 listing text and images.

@@ -1,6 +1,6 @@
 # Privacy Policy
 
-Copy Page as Markdown converts the page you are on to Markdown and writes it to
+Copy as Markdown by Temi converts the page you are on to Markdown and writes it to
 your clipboard when you click its toolbar icon or press its shortcut.
 
 The extension reads the content of the current tab only when you trigger it. The

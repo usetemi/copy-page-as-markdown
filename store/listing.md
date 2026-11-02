@@ -2,7 +2,7 @@
 
 ## Name
 
-Copy Page as Markdown
+Copy as Markdown by Temi
 
 ## Summary
 
